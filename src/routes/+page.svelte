@@ -1,107 +1,64 @@
 <script lang="ts">
-import { base } from "$app/paths";
-import { corvaProps } from "$lib/corva";
-
-const flowData = [
-  { label: "Checked in", value: 64 },
-  { label: "Waiting room", value: 18 },
-  { label: "In room", value: 29 },
-  { label: "Follow-up set", value: 52 }
-];
-
-const clinicColumns = [
-  { key: "clinic", header: "Clinic" },
-  { key: "providers", header: "Providers" },
-  { key: "wait", header: "Avg wait" },
-  { key: "status", header: "Status" }
-];
-
-const clinicRows = [
-  { clinic: "Northside Family", providers: 12, wait: "18 min", status: "Stable" },
-  { clinic: "Rivergate Pediatrics", providers: 9, wait: "24 min", status: "Rooming delay" },
-  { clinic: "Oak Hill Urgent Care", providers: 16, wait: "31 min", status: "Surge" }
-];
+  import { base } from "$app/paths";
 </script>
 
-<svelte:head>
-  <title>VerdantCare Clinics | CorvaUI Svelte Demo</title>
-</svelte:head>
-
-<section class="hero-band">
-  <div class="hero-copy">
-    <corva-stack gap="lg">
-      <corva-badge tone="success">Clinic network operations</corva-badge>
-      <corva-typography as="h1" variant="display">
-        VerdantCare helps multi-site clinics protect access, flow, and follow-up.
-      </corva-typography>
-      <corva-typography variant="body">
-        A SvelteKit demo for care coordinators, front-desk leads, and operations directors who need appointment demand, patient readiness, rooming delays, and outreach work in one place.
-      </corva-typography>
-      <div class="action-row">
-        <corva-button>Review today</corva-button>
-        <corva-button variant="secondary">Open access plan</corva-button>
-        <corva-link href={`${base}/dashboard`} variant="standalone">View dashboard</corva-link>
-      </div>
-    </corva-stack>
-  </div>
-
-  <corva-paper elevation="sm">
-    <div class="operations-snapshot">
-      <div class="snapshot-header">
-        <corva-badge tone="info">Today</corva-badge>
-        <corva-typography as="h2" variant="title">Network access snapshot</corva-typography>
-      </div>
-      <corva-progress label="Same-day appointment capacity" value="72"></corva-progress>
-      <corva-progress label="Charts prepared before visit" value="91"></corva-progress>
-      <corva-progress label="Follow-ups scheduled before discharge" value="84"></corva-progress>
-      <corva-alert tone="warning" heading="Rivergate needs support">
-        Pediatric rooming delay is above threshold. Float one MA from Northside after lunch.
-      </corva-alert>
+<section class="home-hero" aria-labelledby="home-title">
+  <div class="home-copy">
+    <corva-badge tone="warning">Community power, working today</corva-badge>
+    <corva-typography id="home-title" as="h1" variant="display">The energy transition belongs on your block.</corva-typography>
+    <corva-typography variant="body">Common Ground helps neighborhoods own clean generation, share stored power, and keep essential places running when the larger grid cannot.</corva-typography>
+    <div class="hero-actions">
+      <corva-link href={`${base}/about`} variant="button">Find your program</corva-link>
+      <corva-link href={`${base}/dashboard`} variant="standalone">See community impact</corva-link>
     </div>
-  </corva-paper>
+    <div class="member-proof" aria-label="Community energy proof">
+      <span><strong>5,428</strong> member homes</span>
+      <span><strong>72%</strong> energy sourced locally</span>
+      <span><strong>18 hrs</strong> average backup</span>
+    </div>
+  </div>
+  <figure class="home-photo">
+    <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1500&q=84" alt="Solar panels collecting afternoon light across a green community landscape" />
+    <figcaption><strong>East Ward</strong><span>Solar surplus is supplying 312 nearby homes.</span></figcaption>
+  </figure>
 </section>
 
-<section class="content-grid three">
-  <corva-card eyebrow="Access" heading="Slots, triage, and demand">
-    Balance visit types and provider capacity without hiding urgent-care pressure.
-  </corva-card>
-  <corva-card eyebrow="Care team" heading="Everyone sees the same queue">
-    Front desk, nurses, providers, and care coordinators share patient status.
-  </corva-card>
-  <corva-card eyebrow="Quality" heading="Follow-up does not disappear">
-    Outreach, labs, prescriptions, and referral tasks stay connected to visits.
-  </corva-card>
+<section class="manifesto" aria-labelledby="manifesto-title">
+  <span class="manifesto-mark">CG</span>
+  <div>
+    <corva-typography id="manifesto-title" as="h2" variant="title">Not a utility plan. A neighborhood asset.</corva-typography>
+    <p>Members help choose where generation is built, how resilience credits are shared, and which community services receive priority during an outage.</p>
+  </div>
 </section>
 
-<section class="split-grid">
-  <corva-chart label="Patient flow" use:corvaProps={{ data: flowData }}></corva-chart>
-  <corva-data-table
-    caption="Clinic access watch"
-    use:corvaProps={{ columns: clinicColumns, rows: clinicRows }}
-  ></corva-data-table>
-</section>
-
-<section class="section-stack">
+<section class="how-it-works" aria-labelledby="process-title">
   <div class="section-heading">
-    <corva-typography as="h2" variant="title">What this demo proves</corva-typography>
-    <corva-badge tone="neutral">SvelteKit plus CorvaUI</corva-badge>
+    <corva-badge tone="success">One connected system</corva-badge>
+    <corva-typography id="process-title" as="h2" variant="title">Generate nearby. Store together. Share the value.</corva-typography>
   </div>
-  <div class="content-grid two">
-    <corva-paper elevation="sm">
-      <corva-stack gap="md">
-        <corva-typography as="h3" variant="subtitle">Product front door</corva-typography>
-        <corva-typography variant="body">
-          The main page introduces a realistic clinic operations product rather than a component catalog.
-        </corva-typography>
-      </corva-stack>
-    </corva-paper>
-    <corva-paper elevation="sm">
-      <corva-stack gap="md">
-        <corva-typography as="h3" variant="subtitle">Application routes</corva-typography>
-        <corva-typography variant="body">
-          Dashboard, intake, patients, schedule table, settings, and proof pages exercise the same component vocabulary.
-        </corva-typography>
-      </corva-stack>
-    </corva-paper>
+  <div class="process-grid">
+    <article><span>Sun</span><h3>Local generation</h3><p>Schools, roofs, parking canopies, and community land become productive infrastructure.</p></article>
+    <article><span>Store</span><h3>Shared resilience</h3><p>Neighborhood batteries protect essential loads and absorb low-cost local power.</p></article>
+    <article><span>Return</span><h3>Member benefit</h3><p>Transparent credits and lower peaks send value back to the people who made it possible.</p></article>
   </div>
+</section>
+
+<section class="status-story" aria-labelledby="status-title">
+  <div class="energy-orbit" aria-label="Energy flow diagram">
+    <span class="orbit-center">72%<small>local now</small></span>
+    <span class="orbit-label orbit-a">Homes</span>
+    <span class="orbit-label orbit-b">Schools</span>
+    <span class="orbit-label orbit-c">Storage</span>
+  </div>
+  <div class="status-copy">
+    <corva-typography id="status-title" as="h2" variant="title">A grid that can explain itself.</corva-typography>
+    <p>Members see where today's power came from, what the community stored, and how much value returned locally.</p>
+    <corva-progress label="Local energy supplied today" value="72"></corva-progress>
+    <corva-alert tone="success" heading="Resilience reserve ready">All critical community circuits can operate through tonight’s peak window.</corva-alert>
+  </div>
+</section>
+
+<section class="closing-band">
+  <div><span>Membership starts with your address.</span><h2>See what your neighborhood can build together.</h2></div>
+  <corva-link href={`${base}/about`} variant="button">Compare programs</corva-link>
 </section>

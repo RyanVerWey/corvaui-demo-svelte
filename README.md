@@ -1,6 +1,6 @@
 # CorvaUI Svelte Demo
 
-Public Vercel demo using SvelteKit, direct `@corvaui/web-components` custom elements, `@corvaui/tokens`, and the mint token family. The app mocks VerdantCare Clinics, a multi-site clinic operations product.
+Public Vercel showcase using SvelteKit, direct `@corvaui/web-components` custom elements, `@corvaui/tokens`, and the Amber token family. Common Ground Energy is a four-route community microgrid site with marketing, program comparison, a site DataGrid, and impact reports.
 
 ## Routes
 

@@ -1,98 +1,54 @@
 <script lang="ts">
-import { page } from "$app/stores";
-import { base } from "$app/paths";
-import { onMount } from "svelte";
-import "@corvaui/tokens/css";
-import "../styles.css";
-import { corvaProps } from "$lib/corva";
+  import { page } from "$app/stores";
+  import { base } from "$app/paths";
+  import { onMount } from "svelte";
+  import "@corvaui/tokens/css";
+  import "../styles.css";
+  import { routes } from "$lib/content";
 
-let isDark = false;
+  let isDark = false;
+  $: theme = isDark ? "amber-dark" : "amber-light";
+  $: activePath = $page.route.id ?? "/";
 
-const navItems = [
-  { id: "home", label: "Home", href: `${base}/`, route: "/" },
-  { id: "dashboard", label: "Clinic dashboard", href: `${base}/dashboard`, route: "/dashboard", badge: "Live" },
-  { id: "work-orders", label: "Visit intake", href: `${base}/work-orders`, route: "/work-orders" },
-  { id: "customers", label: "Patients", href: `${base}/customers`, route: "/customers" },
-  { id: "data-table", label: "Schedule table", href: `${base}/data-table`, route: "/data-table" },
-  { id: "settings", label: "Settings", href: `${base}/settings`, route: "/settings" },
-  { id: "about", label: "Package proof", href: `${base}/about`, route: "/about" }
-];
+  onMount(async () => {
+    await import("$lib/corva");
+    isDark = localStorage.getItem("common-ground-theme") === "amber-dark";
+  });
 
-const bottomNavItems = [
-  { id: "home", label: "Home" },
-  { id: "dashboard", label: "Dashboard" },
-  { id: "work-orders", label: "Intake" },
-  { id: "customers", label: "Patients" },
-  { id: "data-table", label: "Schedule" },
-  { id: "settings", label: "Settings" }
-];
-
-$: theme = isDark ? "mint-dark" : "mint-light";
-$: themeLabel = isDark ? "Mint dark" : "Mint light";
-$: activeId = navItems.find((item) => item.route === $page.route.id)?.id ?? "home";
-$: breadcrumbs = [
-  { label: "VerdantCare", href: `${base}/` },
-  { label: navItems.find((item) => item.id === activeId)?.label ?? "Home", current: true }
-];
-
-onMount(() => {
-  isDark = localStorage.getItem("verdantcare-theme") === "mint-dark";
-});
-
-const setTheme = (event: CustomEvent<{ checked: boolean }>) => {
-  isDark = event.detail.checked;
-  localStorage.setItem("verdantcare-theme", isDark ? "mint-dark" : "mint-light");
-};
+  const setTheme = (event: CustomEvent<{ checked: boolean }>) => {
+    isDark = event.detail.checked;
+    localStorage.setItem("common-ground-theme", isDark ? "amber-dark" : "amber-light");
+  };
 </script>
 
 <svelte:head>
-  <meta
-    name="description"
-    content="VerdantCare clinic operations demo built with SvelteKit and CorvaUI web components."
-  />
+  <meta name="description" content="Common Ground Energy, a community microgrid showcase built with SvelteKit and CorvaUI." />
 </svelte:head>
 
-<main class="site-shell" data-corva-theme={theme}>
-  <corva-app-bar heading="VerdantCare Clinics">
-    <nav class="top-nav" aria-label="Primary">
-      {#each navItems as item}
-        <corva-link href={item.href} variant="standalone">{item.label}</corva-link>
+<div class="site-shell" data-corva-theme={theme}>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <corva-app-bar heading="Common Ground Energy">
+    <nav class="primary-nav" slot="navigation" aria-label="Primary navigation">
+      {#each routes as route}
+        <a href={`${base}${route.href === "/" ? "/" : route.href}`} aria-current={activePath === route.href ? "page" : undefined}>{route.label}</a>
       {/each}
     </nav>
-    <corva-tooltip label={themeLabel}>
-      <corva-switch
-        label="Dark"
-        description="Toggle token theme"
-        checked={isDark}
-        on:corvaChange={setTheme}
-      ></corva-switch>
-    </corva-tooltip>
+    <corva-switch slot="actions" label="Dark mode" checked={isDark} on:corvaChange={setTheme}></corva-switch>
   </corva-app-bar>
+  <details class="mobile-menu">
+    <summary>Menu</summary>
+    <nav aria-label="Mobile navigation">
+      {#each routes as route}
+        <a href={`${base}${route.href === "/" ? "/" : route.href}`} aria-current={activePath === route.href ? "page" : undefined}>{route.label}</a>
+      {/each}
+    </nav>
+  </details>
 
-  <div class="site-layout">
-    <aside class="site-sidebar">
-      <corva-sidebar
-        heading="VerdantCare"
-        label="Clinic navigation"
-        active-id={activeId}
-        use:corvaProps={{ items: navItems }}
-      ></corva-sidebar>
-      <corva-alert tone="info" heading="Mint theme">
-        SvelteKit demo uses mint-light and mint-dark across a clinic operations product.
-      </corva-alert>
-    </aside>
+  <main id="main-content" tabindex="-1"><slot /></main>
 
-    <section class="site-main" aria-label="VerdantCare page content">
-      <corva-breadcrumbs label="Page trail" use:corvaProps={{ items: breadcrumbs }}></corva-breadcrumbs>
-      <slot />
-    </section>
-  </div>
-
-  <div class="mobile-nav">
-    <corva-bottom-navigation
-      label="Mobile navigation"
-      active-id={activeId}
-      use:corvaProps={{ items: bottomNavItems }}
-    ></corva-bottom-navigation>
-  </div>
-</main>
+  <footer>
+    <span>Power shaped with neighbors.</span>
+    <span>SvelteKit + CorvaUI</span>
+    <a href="https://www.corvaui.com/">Design system documentation</a>
+  </footer>
+</div>
