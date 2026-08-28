@@ -1,26 +1,26 @@
 <script lang="ts">
 import { corvaProps } from "$lib/corva";
 
-const routeHealth = [
-  { label: "On-time arrivals", value: 92 },
-  { label: "Jobs closed", value: 76 },
-  { label: "At-risk promises", value: 14 },
-  { label: "Parts ready", value: 87 }
+const accessHealth = [
+  { label: "Same-day capacity", value: 72 },
+  { label: "Charts ready", value: 91 },
+  { label: "Rooming on time", value: 78 },
+  { label: "Outreach closed", value: 84 }
 ];
 
-const workOrderColumns = [
-  { key: "id", header: "Order" },
-  { key: "customer", header: "Customer" },
-  { key: "crew", header: "Crew" },
-  { key: "window", header: "Window" },
-  { key: "status", header: "Status" }
+const visitColumns = [
+  { key: "time", header: "Time" },
+  { key: "patient", header: "Patient" },
+  { key: "provider", header: "Provider" },
+  { key: "status", header: "Status" },
+  { key: "next", header: "Next step" }
 ];
 
-const workOrderRows = [
-  { id: "WO-1842", customer: "Harris Medical", crew: "Crew 14", window: "08:00-10:00", status: "En route" },
-  { id: "WO-1843", customer: "Arbor Ridge HOA", crew: "Crew 8", window: "10:00-12:00", status: "Parts hold" },
-  { id: "WO-1844", customer: "Forge Foods", crew: "Crew 21", window: "13:00-15:00", status: "Confirmed" },
-  { id: "WO-1845", customer: "Cedarline Bank", crew: "Crew 3", window: "15:00-17:00", status: "Needs ETA" }
+const visitRows = [
+  { time: "08:20", patient: "M. Alvarez", provider: "Dr. Rowan", status: "Roomed", next: "Lab draw" },
+  { time: "09:10", patient: "S. Brooks", provider: "NP Carter", status: "Waiting", next: "Insurance check" },
+  { time: "10:00", patient: "R. Patel", provider: "Dr. Imani", status: "Ready", next: "Discharge note" },
+  { time: "10:40", patient: "T. Nguyen", provider: "Dr. Rowan", status: "Delayed", next: "Float MA" }
 ];
 
 const workflowColumns = [
@@ -28,45 +28,45 @@ const workflowColumns = [
     id: "intake",
     title: "Intake",
     items: [
-      { id: "new-1", title: "Two HVAC warranty calls", meta: "High value" },
-      { id: "new-2", title: "Elevator access notes missing", meta: "Account team" }
+      { id: "check-1", title: "Verify Rivergate insurance queue", meta: "Front desk" },
+      { id: "check-2", title: "Prepare sports physical packet", meta: "Peds" }
     ]
   },
   {
-    id: "dispatch",
-    title: "Dispatch",
+    id: "care",
+    title: "Care Team",
     items: [
-      { id: "disp-1", title: "Crew 14 to Harris Medical", meta: "Route locked" },
-      { id: "disp-2", title: "Crew 8 waits on compressor", meta: "Parts hold" }
+      { id: "care-1", title: "Rooming delay at Rivergate", meta: "Needs float" },
+      { id: "care-2", title: "A1C lab review", meta: "Dr. Imani" }
     ]
   },
   {
-    id: "closeout",
-    title: "Closeout",
+    id: "followup",
+    title: "Follow-up",
     items: [
-      { id: "done-1", title: "Bank alarm reset", meta: "Photos attached" },
-      { id: "done-2", title: "HOA irrigation repair", meta: "Invoice ready" }
+      { id: "fu-1", title: "Referral confirmation", meta: "Cardiology" },
+      { id: "fu-2", title: "Medication check-in", meta: "Tomorrow" }
     ]
   }
 ];
 
 const timelineEvents = [
-  { id: "a", label: "06:42", description: "Overnight calls triaged into service promises.", meta: "Ops" },
-  { id: "b", label: "07:15", description: "Truck stock scan completed for first wave.", meta: "Warehouse" },
-  { id: "c", label: "08:05", description: "Dispatch lead approved route swaps.", meta: "Dispatch" }
+  { id: "a", label: "07:35", description: "Same-day visit slots released for respiratory clinic.", meta: "Access" },
+  { id: "b", label: "08:10", description: "Northside chart prep complete for first wave.", meta: "Care team" },
+  { id: "c", label: "09:25", description: "Rivergate rooming delay crossed support threshold.", meta: "Operations" }
 ];
 </script>
 
 <svelte:head>
-  <title>Metrics Dashboard | CorvaUI Operations</title>
+  <title>Clinic Dashboard | VerdantCare</title>
 </svelte:head>
 
 <section class="page-header">
   <corva-stack gap="md">
     <corva-badge tone="info">Operations dashboard</corva-badge>
-    <corva-typography as="h1" variant="display">Morning service control</corva-typography>
+    <corva-typography as="h1" variant="display">Clinic access control</corva-typography>
     <corva-typography variant="body">
-      Dispatch, account promises, and closeout readiness stay visible before the field day drifts.
+      Network leaders can see provider capacity, patient flow, rooming delays, and follow-up work before bottlenecks become missed care.
     </corva-typography>
   </corva-stack>
   <corva-button-group label="Dashboard actions">
@@ -76,33 +76,33 @@ const timelineEvents = [
 </section>
 
 <section class="content-grid three">
-  <corva-card eyebrow="Booked route time" heading="78%">
-    <corva-progress label="Target 82%" value="78"></corva-progress>
+  <corva-card eyebrow="Access" heading="72% same-day">
+    <corva-progress label="Target 80%" value="72"></corva-progress>
   </corva-card>
-  <corva-card eyebrow="Open risks" heading="11">
-    <corva-progress label="Risk cleared" value="64"></corva-progress>
+  <corva-card eyebrow="Patient flow" heading="18 min wait">
+    <corva-progress label="Rooming confidence" value="78"></corva-progress>
   </corva-card>
-  <corva-card eyebrow="Invoice ready" heading="$42.8K">
-    <corva-progress label="Closeout package complete" value="71"></corva-progress>
+  <corva-card eyebrow="Follow-up" heading="84% closed">
+    <corva-progress label="Outreach complete" value="84"></corva-progress>
   </corva-card>
 </section>
 
 <section class="split-grid">
-  <corva-chart label="Route health" use:corvaProps={{ data: routeHealth }}></corva-chart>
-  <corva-card eyebrow="Workflow" heading="Today by stage">
+  <corva-chart label="Clinic access health" use:corvaProps={{ data: accessHealth }}></corva-chart>
+  <corva-card eyebrow="Workflow" heading="Care coordination board">
     <corva-workflow-board use:corvaProps={{ columns: workflowColumns }}></corva-workflow-board>
   </corva-card>
 </section>
 
 <section class="split-grid">
   <corva-data-table
-    caption="Active work orders"
-    use:corvaProps={{ columns: workOrderColumns, rows: workOrderRows }}
+    caption="Morning appointment queue"
+    use:corvaProps={{ columns: visitColumns, rows: visitRows }}
   ></corva-data-table>
   <div class="section-stack">
     <corva-timeline use:corvaProps={{ events: timelineEvents }}></corva-timeline>
-    <corva-alert tone="warning" heading="Capacity watch">
-      Piedmont route has one crew open after 14:30. Keep urgent warranty calls there.
+    <corva-alert tone="warning" heading="Staffing watch">
+      Float one medical assistant to Rivergate Pediatrics from 12:00 to 15:00.
     </corva-alert>
   </div>
 </section>

@@ -3,7 +3,7 @@ import { corvaProps } from "$lib/corva";
 
 const tabs = [
   { id: "profile", label: "Profile" },
-  { id: "notifications", label: "Notifications" },
+  { id: "notifications", label: "Alerts" },
   { id: "localization", label: "Locale" }
 ];
 
@@ -15,8 +15,8 @@ const densityOptions = [
 
 const localeOptions = [
   { label: "English, United States", value: "en-US" },
-  { label: "English, Canada", value: "en-CA" },
-  { label: "Spanish, United States", value: "es-US" }
+  { label: "Spanish, United States", value: "es-US" },
+  { label: "Arabic", value: "ar" }
 ];
 
 const timezoneOptions = [
@@ -27,26 +27,26 @@ const timezoneOptions = [
 </script>
 
 <svelte:head>
-  <title>Settings | CorvaUI Operations</title>
+  <title>Settings | VerdantCare</title>
 </svelte:head>
 
 <section class="page-header">
   <corva-stack gap="md">
     <corva-badge tone="neutral">Account settings</corva-badge>
-    <corva-typography as="h1" variant="display">Preferences for dispatch work.</corva-typography>
+    <corva-typography as="h1" variant="display">Preferences for clinic operations.</corva-typography>
     <corva-typography variant="body">
-      Settings cover identity, notification rules, locale, density, and theme-adjacent preferences.
+      Settings cover identity, notification rules, locale, density, and theme-adjacent preferences for care teams.
     </corva-typography>
   </corva-stack>
   <corva-tabs label="Settings sections" active-id="profile" use:corvaProps={{ items: tabs }}></corva-tabs>
 </section>
 
 <section class="split-grid">
-  <corva-card eyebrow="Profile" heading="Account owner">
+  <corva-card eyebrow="Profile" heading="Clinic operator">
     <div class="form-grid">
-      <corva-text-field label="Name" value="Mina Patel"></corva-text-field>
-      <corva-text-field label="Role" value="Regional operations lead"></corva-text-field>
-      <corva-text-field label="Email" type="email" value="mina@northstar.example"></corva-text-field>
+      <corva-text-field label="Name" value="Lina Mercado"></corva-text-field>
+      <corva-text-field label="Role" value="Network operations lead"></corva-text-field>
+      <corva-text-field label="Email" type="email" value="lina@verdantcare.example"></corva-text-field>
       <corva-select label="Locale" value="en-US" use:corvaProps={{ options: localeOptions }}></corva-select>
       <corva-select label="Timezone" value="America/New_York" use:corvaProps={{ options: timezoneOptions }}></corva-select>
       <corva-toggle-group label="Workspace density" value="comfortable" use:corvaProps={{ options: densityOptions }}></corva-toggle-group>
@@ -69,13 +69,13 @@ const timezoneOptions = [
 </section>
 
 <section class="content-grid three">
-  <corva-card eyebrow="Dispatch" heading="Route exceptions">
-    <corva-switch label="Notify when a route falls below promise confidence" checked></corva-switch>
+  <corva-card eyebrow="Access" heading="Same-day capacity">
+    <corva-switch label="Alert when same-day capacity drops below 20%" checked></corva-switch>
   </corva-card>
-  <corva-card eyebrow="Accounts" heading="Renewal proof">
-    <corva-switch label="Send weekly customer proof digest" checked></corva-switch>
+  <corva-card eyebrow="Care plans" heading="Follow-up gaps">
+    <corva-switch label="Send daily unresolved follow-up digest" checked></corva-switch>
   </corva-card>
-  <corva-card eyebrow="Billing" heading="Closeout gaps">
-    <corva-switch label="Alert when invoice evidence is incomplete"></corva-switch>
+  <corva-card eyebrow="Quality" heading="Chart readiness">
+    <corva-switch label="Warn when chart prep is incomplete before visit"></corva-switch>
   </corva-card>
 </section>

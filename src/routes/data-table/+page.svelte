@@ -1,23 +1,23 @@
 <script lang="ts">
 import { corvaProps } from "$lib/corva";
 
-const serviceRecordColumns = [
-  { key: "id", header: "Record", sortable: true, filterable: true },
-  { key: "account", header: "Account", sortable: true, filterable: true },
-  { key: "region", header: "Region", sortable: true, filterable: true },
-  { key: "owner", header: "Owner", sortable: true, filterable: true },
-  { key: "priority", header: "Priority", sortable: true, filterable: true },
+const scheduleColumns = [
+  { key: "id", header: "Visit", sortable: true, filterable: true },
+  { key: "patient", header: "Patient", sortable: true, filterable: true },
+  { key: "clinic", header: "Clinic", sortable: true, filterable: true },
+  { key: "provider", header: "Provider", sortable: true, filterable: true },
+  { key: "type", header: "Type", sortable: true, filterable: true },
   { key: "status", header: "Status", sortable: true, filterable: true },
-  { key: "window", header: "Window", sortable: true, filterable: true }
+  { key: "time", header: "Time", sortable: true, filterable: true }
 ];
 
-const serviceRecordRows = [
-  { id: "SR-2101", account: "Harris Medical", region: "Charlotte", owner: "Mina Patel", priority: "High", status: "En route", window: "08:00-10:00" },
-  { id: "SR-2102", account: "Arbor Ridge HOA", region: "Piedmont", owner: "Cole Reed", priority: "Normal", status: "Parts hold", window: "10:00-12:00" },
-  { id: "SR-2103", account: "Forge Foods", region: "Triad", owner: "Drew Lane", priority: "Critical", status: "Confirmed", window: "13:00-15:00" },
-  { id: "SR-2104", account: "Cedarline Bank", region: "Uptown", owner: "Mina Patel", priority: "High", status: "Needs ETA", window: "15:00-17:00" },
-  { id: "SR-2105", account: "Brightline College", region: "University", owner: "Cole Reed", priority: "Normal", status: "Scheduled", window: "09:30-11:30" },
-  { id: "SR-2106", account: "Mason Street Retail", region: "South End", owner: "Drew Lane", priority: "High", status: "Closed", window: "12:30-14:30" }
+const scheduleRows = [
+  { id: "VC-2101", patient: "Mara Ellis", clinic: "Northside", provider: "Dr. Rowan", type: "Primary care", status: "Ready", time: "08:20" },
+  { id: "VC-2102", patient: "Sam Brooks", clinic: "Rivergate", provider: "NP Carter", type: "Pediatrics", status: "Waiting", time: "09:10" },
+  { id: "VC-2103", patient: "Ravi Patel", clinic: "Oak Hill", provider: "Dr. Imani", type: "Chronic care", status: "Roomed", time: "10:00" },
+  { id: "VC-2104", patient: "Talia Nguyen", clinic: "Rivergate", provider: "PA Simmons", type: "Urgent care", status: "Delayed", time: "10:40" },
+  { id: "VC-2105", patient: "Elena Cruz", clinic: "Northside", provider: "Dr. Rowan", type: "Lab review", status: "Scheduled", time: "11:30" },
+  { id: "VC-2106", patient: "Owen Park", clinic: "Oak Hill", provider: "NP Carter", type: "Behavioral", status: "Checked in", time: "12:15" }
 ];
 
 const auditColumns = [
@@ -35,42 +35,42 @@ const auditRows = [
 </script>
 
 <svelte:head>
-  <title>Data Table | CorvaUI Operations</title>
+  <title>Schedule Table | VerdantCare</title>
 </svelte:head>
 
 <section class="page-header">
   <corva-stack gap="md">
-    <corva-badge tone="info">Data operations</corva-badge>
-    <corva-typography as="h1" variant="display">Service records without a demo shortcut.</corva-typography>
+    <corva-badge tone="info">Schedule operations</corva-badge>
+    <corva-typography as="h1" variant="display">Clinic schedule table.</corva-typography>
     <corva-typography variant="body">
-      SvelteKit owns the route while CorvaUI custom elements handle dense records, filtering, paging, and proof metadata.
+      SvelteKit owns the route while CorvaUI custom elements handle dense visit records, filtering, paging, and proof metadata.
     </corva-typography>
   </corva-stack>
-  <corva-button-group label="Data table actions">
+  <corva-button-group label="Schedule table actions">
     <corva-button size="sm" variant="secondary">Export CSV</corva-button>
     <corva-button size="sm">Save view</corva-button>
   </corva-button-group>
 </section>
 
-<corva-toolbar label="Service record tools">
-  <corva-search-form label="Search service records" placeholder="Account, region, owner, status"></corva-search-form>
-  <corva-badge tone="success">6 active records</corva-badge>
+<corva-toolbar label="Schedule tools">
+  <corva-search-form label="Search schedule" placeholder="Patient, clinic, provider, status"></corva-search-form>
+  <corva-badge tone="success">6 visits</corva-badge>
 </corva-toolbar>
 
 <section class="split-grid wide-left">
   <corva-data-grid
-    caption="Service record queue"
+    caption="Clinic visit queue"
     filterable
     sortable
     pageable
     page-size="4"
-    use:corvaProps={{ columns: serviceRecordColumns, rows: serviceRecordRows }}
+    use:corvaProps={{ columns: scheduleColumns, rows: scheduleRows }}
   ></corva-data-grid>
 
   <div class="section-stack">
-    <corva-card eyebrow="Grid policy" heading="Route-owned context">
+    <corva-card eyebrow="Schedule policy" heading="Care-ready context">
       <corva-stack gap="md">
-        <corva-progress label="Closeout records with full evidence" value="84"></corva-progress>
+        <corva-progress label="Visits with chart prep complete" value="91"></corva-progress>
         <corva-alert tone="info" heading="Svelte integration">
           Arrays are assigned as element properties through the Corva helper so Stencil components receive typed data.
         </corva-alert>

@@ -1,105 +1,106 @@
 <script lang="ts">
 import { corvaProps } from "$lib/corva";
 
-const serviceTypes = [
-  { label: "Preventive maintenance", value: "maintenance" },
-  { label: "Warranty repair", value: "warranty" },
-  { label: "Emergency response", value: "emergency" }
+const visitTypes = [
+  { label: "Primary care", value: "primary" },
+  { label: "Urgent care", value: "urgent" },
+  { label: "Pediatrics", value: "pediatrics" },
+  { label: "Behavioral health", value: "behavioral" }
 ];
 
-const priorityOptions = [
-  { label: "Standard", value: "standard", description: "Schedule inside account promise." },
-  { label: "Urgent", value: "urgent", description: "Dispatch lead review required." },
-  { label: "Critical", value: "critical", description: "Escalate account owner and operations." }
+const acuityOptions = [
+  { label: "Routine", value: "routine", description: "Book into normal provider schedule." },
+  { label: "Soon", value: "soon", description: "Offer same-day or next-day appointment." },
+  { label: "Urgent", value: "urgent", description: "Clinical triage review before scheduling." }
 ];
 
-const technicianOptions = ["Crew 3", "Crew 8", "Crew 14", "Crew 21"];
-const uploadFiles = [{ name: "site-access-photo.jpg", meta: "1.2 MB" }];
+const providerOptions = ["Dr. Rowan", "NP Carter", "Dr. Imani", "PA Simmons"];
+const uploadFiles = [{ name: "referral-summary.pdf", meta: "228 KB" }];
 </script>
 
 <svelte:head>
-  <title>Work Order Form | CorvaUI Operations</title>
+  <title>Visit Intake | VerdantCare</title>
 </svelte:head>
 
 <section class="page-header">
   <corva-stack gap="md">
-    <corva-badge tone="success">Work order intake</corva-badge>
-    <corva-typography as="h1" variant="display">Create a service-ready visit.</corva-typography>
+    <corva-badge tone="success">Visit intake</corva-badge>
+    <corva-typography as="h1" variant="display">Create a visit-ready appointment.</corva-typography>
     <corva-typography variant="body">
-      Required account, timing, safety, and attachment fields make the form feel like daily operations, not sample controls.
+      Staff capture patient context, visit reason, schedule fit, documents, and follow-up expectations before the chart reaches the care team.
     </corva-typography>
   </corva-stack>
   <corva-stepper
     active-index="1"
     use:corvaProps={{ steps: [
-      { id: "account", label: "Account" },
-      { id: "scope", label: "Scope" },
-      { id: "dispatch", label: "Dispatch" }
+      { id: "patient", label: "Patient" },
+      { id: "visit", label: "Visit" },
+      { id: "ready", label: "Ready" }
     ] }}
   ></corva-stepper>
 </section>
 
 <section class="split-grid">
-  <corva-card eyebrow="New request" heading="Service details">
-    <form class="form-grid" aria-label="New work order">
-      <corva-text-field label="Customer account" name="customer" value="Harris Medical Group"></corva-text-field>
-      <corva-text-field label="Site contact" name="contact" placeholder="Name and phone"></corva-text-field>
+  <corva-card eyebrow="New appointment" heading="Visit details">
+    <form class="form-grid" aria-label="New clinic visit">
+      <corva-text-field label="Patient name" name="patient" value="Mara Ellis"></corva-text-field>
+      <corva-text-field label="Preferred contact" name="contact" placeholder="Phone or email"></corva-text-field>
       <corva-select
-        label="Service type"
-        name="serviceType"
-        value="warranty"
-        use:corvaProps={{ options: serviceTypes }}
+        label="Visit type"
+        name="visitType"
+        value="primary"
+        use:corvaProps={{ options: visitTypes }}
       ></corva-select>
       <corva-autocomplete
-        label="Preferred crew"
-        placeholder="Search crews"
-        value="Crew 14"
-        use:corvaProps={{ options: technicianOptions }}
+        label="Preferred provider"
+        placeholder="Search providers"
+        value="Dr. Rowan"
+        use:corvaProps={{ options: providerOptions }}
       ></corva-autocomplete>
-      <corva-date-picker label="Requested date" name="requestedDate" value="2026-06-18"></corva-date-picker>
-      <corva-number-field label="Estimated labor hours" name="hours" min="1" max="12" value="3"></corva-number-field>
-      <corva-slider label="Schedule confidence" min="0" max="100" value="82"></corva-slider>
+      <corva-date-picker label="Requested date" name="requestedDate" value="2026-09-10"></corva-date-picker>
+      <corva-number-field label="Estimated visit minutes" name="minutes" min="15" max="90" value="30"></corva-number-field>
+      <corva-slider label="Schedule confidence" min="0" max="100" value="78"></corva-slider>
       <corva-radio-group
-        label="Priority"
-        name="priority"
-        value="urgent"
-        use:corvaProps={{ options: priorityOptions }}
+        label="Acuity"
+        name="acuity"
+        value="soon"
+        use:corvaProps={{ options: acuityOptions }}
       ></corva-radio-group>
       <corva-checkbox
-        label="Customer approved after-hours access"
-        description="Required for work outside primary reception hours."
+        label="Patient consents to SMS reminders"
+        description="Used for appointment reminders and intake completion prompts."
         checked
       ></corva-checkbox>
       <corva-textarea
-        label="Problem statement"
-        name="problem"
+        label="Visit reason"
+        name="reason"
         rows="5"
-        value="North rooftop unit failing under afternoon load. Customer reports repeated reset."
+        value="Follow-up for medication adjustment. Patient reports mild side effects and needs lab review."
       ></corva-textarea>
       <corva-file-upload
-        label="Site photos and documents"
-        description="Attach access photos, warranty documents, or compliance forms."
+        label="Referral and outside records"
+        description="Attach referral notes, lab files, or prior visit summaries."
         action-label="Upload files"
         use:corvaProps={{ files: uploadFiles }}
       ></corva-file-upload>
       <div class="action-row form-actions">
-        <corva-button type="submit">Create work order</corva-button>
+        <corva-button type="submit">Create visit</corva-button>
         <corva-button type="reset" variant="secondary">Save draft</corva-button>
       </div>
     </form>
   </corva-card>
 
   <div class="section-stack">
-    <corva-alert tone="info" heading="Validation smoke">
-      CorvaUI fields carry labels, help copy, values, and error-ready props while SvelteKit owns page routing.
+    <corva-alert tone="info" heading="Clinical readiness">
+      CorvaUI fields carry labels, help copy, values, and error-ready props while SvelteKit owns the visit route.
     </corva-alert>
-    <corva-card eyebrow="Dispatch help" heading="What good looks like">
-      Include the failure mode, site access, preferred arrival window, safety notes, parts guess, and who can approve added work.
+    <corva-card eyebrow="Care team hint" heading="Before rooming">
+      Confirm medications, lab status, referral source, pharmacy, interpreter needs, and preferred follow-up channel.
     </corva-card>
     <corva-empty-state
       align="start"
-      heading="No duplicate ticket found"
-      description="Search matched the account but found no open request for this asset."
+      heading="No duplicate appointment found"
+      description="Search matched the patient but found no open request for this visit reason."
     ></corva-empty-state>
   </div>
 </section>

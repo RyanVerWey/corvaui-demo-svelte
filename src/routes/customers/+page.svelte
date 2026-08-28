@@ -1,81 +1,81 @@
 <script lang="ts">
 import { corvaProps } from "$lib/corva";
 
-const customerColumns = [
-  { key: "account", header: "Account" },
-  { key: "owner", header: "Owner" },
-  { key: "stage", header: "Stage" },
-  { key: "value", header: "Value" },
+const patientColumns = [
+  { key: "patient", header: "Patient" },
+  { key: "cohort", header: "Cohort" },
+  { key: "owner", header: "Care lead" },
+  { key: "status", header: "Status" },
   { key: "next", header: "Next step" }
 ];
 
-const customerRows = [
-  { account: "Harris Medical", owner: "Mina", stage: "Renewal", value: "$128K", next: "Scope north campus" },
-  { account: "Arbor Ridge HOA", owner: "Cole", stage: "Expansion", value: "$74K", next: "Review irrigation SLA" },
-  { account: "Forge Foods", owner: "Drew", stage: "Pilot", value: "$46K", next: "Safety walkthrough" },
-  { account: "Cedarline Bank", owner: "Mina", stage: "Steady", value: "$92K", next: "Quarterly proof pack" }
+const patientRows = [
+  { patient: "Mara Ellis", cohort: "Medication follow-up", owner: "Dr. Rowan", status: "Scheduled", next: "Lab review" },
+  { patient: "Sam Brooks", cohort: "Pediatrics", owner: "NP Carter", status: "Waiting", next: "Insurance check" },
+  { patient: "Ravi Patel", cohort: "Chronic care", owner: "Dr. Imani", status: "Ready", next: "Care plan" },
+  { patient: "Talia Nguyen", cohort: "Urgent care", owner: "PA Simmons", status: "Delayed", next: "Room assignment" }
 ];
 
-const pipelineColumns = [
+const careBoardColumns = [
   {
     id: "new",
-    title: "New",
+    title: "Needs review",
     items: [
-      { id: "lead-1", title: "Municipal water district", meta: "$58K" },
-      { id: "lead-2", title: "Retail freezer network", meta: "$41K" }
+      { id: "p1", title: "Outside lab import", meta: "Mara Ellis" },
+      { id: "p2", title: "Referral missing diagnosis", meta: "Sam Brooks" }
     ]
   },
   {
     id: "active",
-    title: "Active",
+    title: "Care plan",
     items: [
-      { id: "active-1", title: "Forge Foods pilot", meta: "Site visit" },
-      { id: "active-2", title: "Arbor Ridge expansion", meta: "SLA review" }
+      { id: "p3", title: "Hypertension follow-up", meta: "Ravi Patel" },
+      { id: "p4", title: "Asthma action plan", meta: "Northside" }
     ]
   },
   {
-    id: "won",
-    title: "Won",
+    id: "closed",
+    title: "Closed",
     items: [
-      { id: "won-1", title: "Harris Medical renewal", meta: "Legal review" },
-      { id: "won-2", title: "Cedarline proof pack", meta: "Quarterly" }
+      { id: "p5", title: "Portal message resolved", meta: "Yesterday" },
+      { id: "p6", title: "Vaccination form sent", meta: "School packet" }
     ]
   }
 ];
 </script>
 
 <svelte:head>
-  <title>Customers | CorvaUI Operations</title>
+  <title>Patients | VerdantCare</title>
 </svelte:head>
 
 <section class="page-header">
   <corva-stack gap="md">
-    <corva-badge tone="info">Customer records</corva-badge>
-    <corva-typography as="h1" variant="display">Pipeline and account memory.</corva-typography>
+    <corva-badge tone="info">Patient records</corva-badge>
+    <corva-typography as="h1" variant="display">Care plans and patient readiness.</corva-typography>
     <corva-typography variant="body">
-      Sales, service, and account teams can inspect commitments without leaving the operating workspace.
+      Operations and clinical leads can inspect visit status, cohort work, and follow-up commitments without leaving the workspace.
     </corva-typography>
   </corva-stack>
-  <corva-search-form label="Search customers" placeholder="Account, owner, region" submit-label="Search"></corva-search-form>
+  <corva-search-form label="Search patients" placeholder="Patient, cohort, provider" submit-label="Search"></corva-search-form>
 </section>
 
 <section class="split-grid">
-  <corva-card eyebrow="Pipeline" heading="Regional opportunities">
-    <corva-workflow-board use:corvaProps={{ columns: pipelineColumns }}></corva-workflow-board>
+  <corva-card eyebrow="Care coordination" heading="Open patient work">
+    <corva-workflow-board use:corvaProps={{ columns: careBoardColumns }}></corva-workflow-board>
   </corva-card>
-  <corva-card eyebrow="Selected account" heading="Harris Medical">
+  <corva-card eyebrow="Selected patient" heading="Mara Ellis">
     <corva-stack gap="md">
       <div class="identity-row">
-        <corva-avatar initials="HM" alt="Harris Medical"></corva-avatar>
+        <corva-avatar initials="ME" alt="Mara Ellis"></corva-avatar>
         <div>
-          <corva-typography as="h2" variant="subtitle">North campus contract</corva-typography>
-          <corva-typography variant="caption">Renewal due July 2026</corva-typography>
+          <corva-typography as="h2" variant="subtitle">Medication follow-up</corva-typography>
+          <corva-typography variant="caption">Visit set for September 10, 2026</corva-typography>
         </div>
       </div>
-      <corva-progress label="Proof package readiness" value="86"></corva-progress>
-      <corva-rating label="Relationship strength" value="4" max="5"></corva-rating>
+      <corva-progress label="Chart readiness" value="91"></corva-progress>
+      <corva-rating label="Follow-up confidence" value="4" max="5"></corva-rating>
       <corva-alert tone="success" heading="Next best action">
-        Bring first-visit close rate and after-hours coverage data into renewal review.
+        Review outside labs and confirm pharmacy before rooming.
       </corva-alert>
     </corva-stack>
   </corva-card>
@@ -83,11 +83,11 @@ const pipelineColumns = [
 
 <section class="section-stack">
   <div class="section-heading">
-    <corva-typography as="h2" variant="title">Customer records</corva-typography>
-    <corva-pagination label="Customer pages" count="8" page="1"></corva-pagination>
+    <corva-typography as="h2" variant="title">Patient queue</corva-typography>
+    <corva-pagination label="Patient pages" count="8" page="1"></corva-pagination>
   </div>
   <corva-data-grid
-    caption="Customer pipeline records"
-    use:corvaProps={{ columns: customerColumns, rows: customerRows }}
+    caption="Patient readiness records"
+    use:corvaProps={{ columns: patientColumns, rows: patientRows }}
   ></corva-data-grid>
 </section>

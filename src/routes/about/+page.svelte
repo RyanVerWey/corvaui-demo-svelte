@@ -41,15 +41,15 @@ const treeItems = [
 </script>
 
 <svelte:head>
-  <title>Package Proof | CorvaUI Operations</title>
+  <title>Package Proof | VerdantCare</title>
 </svelte:head>
 
 <section class="page-header">
   <corva-stack gap="md">
     <corva-badge tone="success">Package proof</corva-badge>
-    <corva-typography as="h1" variant="display">CorvaUI in a routed SvelteKit app.</corva-typography>
+    <corva-typography as="h1" variant="display">CorvaUI in a routed clinic app.</corva-typography>
     <corva-typography variant="body">
-      This page records how the demo uses installed packages, token themes, custom elements, and file-based routing.
+      This page records how the VerdantCare demo uses installed packages, token themes, custom elements, and file-based routing.
     </corva-typography>
   </corva-stack>
   <corva-button-group label="Proof actions">
@@ -70,10 +70,10 @@ const treeItems = [
 
 <section class="content-grid three">
   <corva-card eyebrow="Tokens" heading="mint-light default">
-    Root `data-corva-theme` starts at mint-light and can switch to mint-dark from the shared app bar.
+    Root data-corva-theme starts at mint-light and can switch to mint-dark from the shared app bar.
   </corva-card>
   <corva-card eyebrow="Components" heading="Native custom elements">
-    Pages use `corva-card`, `corva-data-table`, `corva-workflow-board`, fields, switches, tabs, and charts directly.
+    Pages use CorvaUI cards, data tables, workflow boards, fields, switches, tabs, and charts directly.
   </corva-card>
   <corva-card eyebrow="CSS scope" heading="Composition only">
     Local CSS controls shell layout, grids, spacing, and responsive behavior while components keep their package styling.

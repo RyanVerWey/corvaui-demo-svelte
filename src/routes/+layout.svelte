@@ -10,20 +10,20 @@ let isDark = false;
 
 const navItems = [
   { id: "home", label: "Home", href: `${base}/`, route: "/" },
-  { id: "dashboard", label: "Metrics", href: `${base}/dashboard`, route: "/dashboard", badge: "Live" },
-  { id: "work-orders", label: "Work orders", href: `${base}/work-orders`, route: "/work-orders" },
-  { id: "customers", label: "Customers", href: `${base}/customers`, route: "/customers" },
-  { id: "data-table", label: "Data table", href: `${base}/data-table`, route: "/data-table" },
+  { id: "dashboard", label: "Clinic dashboard", href: `${base}/dashboard`, route: "/dashboard", badge: "Live" },
+  { id: "work-orders", label: "Visit intake", href: `${base}/work-orders`, route: "/work-orders" },
+  { id: "customers", label: "Patients", href: `${base}/customers`, route: "/customers" },
+  { id: "data-table", label: "Schedule table", href: `${base}/data-table`, route: "/data-table" },
   { id: "settings", label: "Settings", href: `${base}/settings`, route: "/settings" },
   { id: "about", label: "Package proof", href: `${base}/about`, route: "/about" }
 ];
 
 const bottomNavItems = [
   { id: "home", label: "Home" },
-  { id: "dashboard", label: "Metrics" },
-  { id: "work-orders", label: "Orders" },
-  { id: "customers", label: "Customers" },
-  { id: "data-table", label: "Data" },
+  { id: "dashboard", label: "Dashboard" },
+  { id: "work-orders", label: "Intake" },
+  { id: "customers", label: "Patients" },
+  { id: "data-table", label: "Schedule" },
   { id: "settings", label: "Settings" }
 ];
 
@@ -31,29 +31,29 @@ $: theme = isDark ? "mint-dark" : "mint-light";
 $: themeLabel = isDark ? "Mint dark" : "Mint light";
 $: activeId = navItems.find((item) => item.route === $page.route.id)?.id ?? "home";
 $: breadcrumbs = [
-  { label: "CorvaUI", href: `${base}/` },
+  { label: "VerdantCare", href: `${base}/` },
   { label: navItems.find((item) => item.id === activeId)?.label ?? "Home", current: true }
 ];
 
 onMount(() => {
-  isDark = localStorage.getItem("northstar-theme") === "mint-dark";
+  isDark = localStorage.getItem("verdantcare-theme") === "mint-dark";
 });
 
 const setTheme = (event: CustomEvent<{ checked: boolean }>) => {
   isDark = event.detail.checked;
-  localStorage.setItem("northstar-theme", isDark ? "mint-dark" : "mint-light");
+  localStorage.setItem("verdantcare-theme", isDark ? "mint-dark" : "mint-light");
 };
 </script>
 
 <svelte:head>
   <meta
     name="description"
-    content="CorvaUI Field Services demo built with SvelteKit routing and CorvaUI web components."
+    content="VerdantCare clinic operations demo built with SvelteKit and CorvaUI web components."
   />
 </svelte:head>
 
 <main class="site-shell" data-corva-theme={theme}>
-  <corva-app-bar heading="CorvaUI Field Services">
+  <corva-app-bar heading="VerdantCare Clinics">
     <nav class="top-nav" aria-label="Primary">
       {#each navItems as item}
         <corva-link href={item.href} variant="standalone">{item.label}</corva-link>
@@ -72,17 +72,17 @@ const setTheme = (event: CustomEvent<{ checked: boolean }>) => {
   <div class="site-layout">
     <aside class="site-sidebar">
       <corva-sidebar
-        heading="Workspace"
-        label="CorvaUI navigation"
+        heading="VerdantCare"
+        label="Clinic navigation"
         active-id={activeId}
         use:corvaProps={{ items: navItems }}
       ></corva-sidebar>
       <corva-alert tone="info" heading="Mint theme">
-        Demo defaults to mint-light and keeps CorvaUI tokens as visual source of truth.
+        SvelteKit demo uses mint-light and mint-dark across a clinic operations product.
       </corva-alert>
     </aside>
 
-    <section class="site-main" aria-label="CorvaUI page content">
+    <section class="site-main" aria-label="VerdantCare page content">
       <corva-breadcrumbs label="Page trail" use:corvaProps={{ items: breadcrumbs }}></corva-breadcrumbs>
       <slot />
     </section>

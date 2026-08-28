@@ -8,6 +8,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -15,6 +16,7 @@ body {
   min-width: 320px;
   background: var(--corva-color-canvas);
   color: var(--corva-color-text);
+  overflow-x: hidden;
 }
 
 button,
@@ -38,6 +40,8 @@ corva-workflow-board {
 
 .site-shell {
   min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
   background: var(--corva-color-canvas);
   color: var(--corva-color-text);
 }
