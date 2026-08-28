@@ -1,5 +1,5 @@
 <script lang="ts">
-import { apexProps } from "$lib/apex";
+import { corvaProps } from "$lib/corva";
 
 const serviceTypes = [
   { label: "Preventive maintenance", value: "maintenance" },
@@ -18,88 +18,88 @@ const uploadFiles = [{ name: "site-access-photo.jpg", meta: "1.2 MB" }];
 </script>
 
 <svelte:head>
-  <title>Work Order Form | Northstar Field Services</title>
+  <title>Work Order Form | CorvaUI Operations</title>
 </svelte:head>
 
 <section class="page-header">
-  <apex-stack gap="md">
-    <apex-badge tone="success">Work order intake</apex-badge>
-    <apex-typography as="h1" variant="display">Create a service-ready visit.</apex-typography>
-    <apex-typography variant="body">
+  <corva-stack gap="md">
+    <corva-badge tone="success">Work order intake</corva-badge>
+    <corva-typography as="h1" variant="display">Create a service-ready visit.</corva-typography>
+    <corva-typography variant="body">
       Required account, timing, safety, and attachment fields make the form feel like daily operations, not sample controls.
-    </apex-typography>
-  </apex-stack>
-  <apex-stepper
+    </corva-typography>
+  </corva-stack>
+  <corva-stepper
     active-index="1"
-    use:apexProps={{ steps: [
+    use:corvaProps={{ steps: [
       { id: "account", label: "Account" },
       { id: "scope", label: "Scope" },
       { id: "dispatch", label: "Dispatch" }
     ] }}
-  ></apex-stepper>
+  ></corva-stepper>
 </section>
 
 <section class="split-grid">
-  <apex-card eyebrow="New request" heading="Service details">
+  <corva-card eyebrow="New request" heading="Service details">
     <form class="form-grid" aria-label="New work order">
-      <apex-text-field label="Customer account" name="customer" value="Harris Medical Group"></apex-text-field>
-      <apex-text-field label="Site contact" name="contact" placeholder="Name and phone"></apex-text-field>
-      <apex-select
+      <corva-text-field label="Customer account" name="customer" value="Harris Medical Group"></corva-text-field>
+      <corva-text-field label="Site contact" name="contact" placeholder="Name and phone"></corva-text-field>
+      <corva-select
         label="Service type"
         name="serviceType"
         value="warranty"
-        use:apexProps={{ options: serviceTypes }}
-      ></apex-select>
-      <apex-autocomplete
+        use:corvaProps={{ options: serviceTypes }}
+      ></corva-select>
+      <corva-autocomplete
         label="Preferred crew"
         placeholder="Search crews"
         value="Crew 14"
-        use:apexProps={{ options: technicianOptions }}
-      ></apex-autocomplete>
-      <apex-date-picker label="Requested date" name="requestedDate" value="2026-06-18"></apex-date-picker>
-      <apex-number-field label="Estimated labor hours" name="hours" min="1" max="12" value="3"></apex-number-field>
-      <apex-slider label="Schedule confidence" min="0" max="100" value="82"></apex-slider>
-      <apex-radio-group
+        use:corvaProps={{ options: technicianOptions }}
+      ></corva-autocomplete>
+      <corva-date-picker label="Requested date" name="requestedDate" value="2026-06-18"></corva-date-picker>
+      <corva-number-field label="Estimated labor hours" name="hours" min="1" max="12" value="3"></corva-number-field>
+      <corva-slider label="Schedule confidence" min="0" max="100" value="82"></corva-slider>
+      <corva-radio-group
         label="Priority"
         name="priority"
         value="urgent"
-        use:apexProps={{ options: priorityOptions }}
-      ></apex-radio-group>
-      <apex-checkbox
+        use:corvaProps={{ options: priorityOptions }}
+      ></corva-radio-group>
+      <corva-checkbox
         label="Customer approved after-hours access"
         description="Required for work outside primary reception hours."
         checked
-      ></apex-checkbox>
-      <apex-textarea
+      ></corva-checkbox>
+      <corva-textarea
         label="Problem statement"
         name="problem"
         rows="5"
         value="North rooftop unit failing under afternoon load. Customer reports repeated reset."
-      ></apex-textarea>
-      <apex-file-upload
+      ></corva-textarea>
+      <corva-file-upload
         label="Site photos and documents"
         description="Attach access photos, warranty documents, or compliance forms."
         action-label="Upload files"
-        use:apexProps={{ files: uploadFiles }}
-      ></apex-file-upload>
+        use:corvaProps={{ files: uploadFiles }}
+      ></corva-file-upload>
       <div class="action-row form-actions">
-        <apex-button type="submit">Create work order</apex-button>
-        <apex-button type="reset" variant="secondary">Save draft</apex-button>
+        <corva-button type="submit">Create work order</corva-button>
+        <corva-button type="reset" variant="secondary">Save draft</corva-button>
       </div>
     </form>
-  </apex-card>
+  </corva-card>
 
   <div class="section-stack">
-    <apex-alert tone="info" heading="Validation smoke">
-      ApexUI fields carry labels, help copy, values, and error-ready props while SvelteKit owns page routing.
-    </apex-alert>
-    <apex-card eyebrow="Dispatch help" heading="What good looks like">
+    <corva-alert tone="info" heading="Validation smoke">
+      CorvaUI fields carry labels, help copy, values, and error-ready props while SvelteKit owns page routing.
+    </corva-alert>
+    <corva-card eyebrow="Dispatch help" heading="What good looks like">
       Include the failure mode, site access, preferred arrival window, safety notes, parts guess, and who can approve added work.
-    </apex-card>
-    <apex-empty-state
+    </corva-card>
+    <corva-empty-state
       align="start"
       heading="No duplicate ticket found"
       description="Search matched the account but found no open request for this asset."
-    ></apex-empty-state>
+    ></corva-empty-state>
   </div>
 </section>

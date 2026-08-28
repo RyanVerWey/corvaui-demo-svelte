@@ -1,5 +1,5 @@
 :root {
-  font-family: var(--apex-font-family-sans);
+  font-family: var(--corva-font-family-sans);
 }
 
 * {
@@ -13,8 +13,8 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: var(--apex-color-canvas);
-  color: var(--apex-color-text);
+  background: var(--corva-color-canvas);
+  color: var(--corva-color-text);
 }
 
 button,
@@ -24,25 +24,25 @@ select {
   font: inherit;
 }
 
-apex-alert,
-apex-card,
-apex-chart,
-apex-data-grid,
-apex-data-table,
-apex-empty-state,
-apex-paper,
-apex-workflow-board {
+corva-alert,
+corva-card,
+corva-chart,
+corva-data-grid,
+corva-data-table,
+corva-empty-state,
+corva-paper,
+corva-workflow-board {
   display: block;
   min-width: 0;
 }
 
 .site-shell {
   min-height: 100vh;
-  background: var(--apex-color-canvas);
-  color: var(--apex-color-text);
+  background: var(--corva-color-canvas);
+  color: var(--corva-color-text);
 }
 
-.site-shell > apex-app-bar {
+.site-shell > corva-app-bar {
   position: sticky;
   top: 0;
   z-index: 20;
@@ -54,7 +54,7 @@ apex-workflow-board {
 .identity-row {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--apex-space-3);
+  gap: var(--corva-space-3);
   align-items: center;
   min-width: 0;
 }
@@ -66,16 +66,16 @@ apex-workflow-board {
 .site-layout {
   display: grid;
   grid-template-columns: minmax(15rem, 18rem) minmax(0, 1fr);
-  gap: var(--apex-space-6);
+  gap: var(--corva-space-6);
   width: min(100%, 96rem);
   margin: 0 auto;
-  padding: var(--apex-space-6);
+  padding: var(--corva-space-6);
 }
 
 .site-sidebar {
   display: grid;
   align-content: start;
-  gap: var(--apex-space-4);
+  gap: var(--corva-space-4);
   position: sticky;
   top: 5.5rem;
   min-width: 0;
@@ -85,7 +85,7 @@ apex-workflow-board {
 .section-stack,
 .operations-snapshot {
   display: grid;
-  gap: var(--apex-space-5);
+  gap: var(--corva-space-5);
   min-width: 0;
 }
 
@@ -97,35 +97,39 @@ apex-workflow-board {
 .split-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
-  gap: var(--apex-space-5);
+  gap: var(--corva-space-5);
   align-items: stretch;
   min-width: 0;
+}
+
+.wide-left {
+  grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.55fr);
 }
 
 .hero-copy {
   display: grid;
   align-content: center;
   min-height: 24rem;
-  padding-block: var(--apex-space-7);
+  padding-block: var(--corva-space-7);
 }
 
 .page-header,
 .section-heading {
   display: flex;
   justify-content: space-between;
-  gap: var(--apex-space-5);
+  gap: var(--corva-space-5);
   align-items: flex-start;
   min-width: 0;
 }
 
-.page-header > apex-stack,
-.hero-copy > apex-stack {
+.page-header > corva-stack,
+.hero-copy > corva-stack {
   max-width: 68ch;
 }
 
 .content-grid {
   display: grid;
-  gap: var(--apex-space-5);
+  gap: var(--corva-space-5);
   min-width: 0;
 }
 
@@ -140,18 +144,18 @@ apex-workflow-board {
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--apex-space-4);
+  gap: var(--corva-space-4);
   min-width: 0;
 }
 
-.form-grid apex-textarea,
-.form-grid apex-file-upload,
+.form-grid corva-textarea,
+.form-grid corva-file-upload,
 .form-actions {
   grid-column: 1 / -1;
 }
 
 .form-actions {
-  padding-block-start: var(--apex-space-2);
+  padding-block-start: var(--corva-space-2);
 }
 
 @media (max-width: 1120px) {
@@ -176,11 +180,11 @@ apex-workflow-board {
   }
 
   .site-layout {
-    padding: var(--apex-space-4);
+    padding: var(--corva-space-4);
   }
 
   .site-main {
-    padding-block-end: var(--apex-space-8);
+    padding-block-end: var(--corva-space-8);
   }
 
   .mobile-nav {
@@ -200,7 +204,7 @@ apex-workflow-board {
 
   .hero-copy {
     min-height: auto;
-    padding-block: var(--apex-space-5);
+    padding-block: var(--corva-space-5);
   }
 
   .page-header,

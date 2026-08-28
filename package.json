@@ -1,22 +1,26 @@
 {
-  "name": "apexui-demo-svelte",
+  "name": "corvaui-demo-svelte",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1"
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "npm audit && npm run build"
   },
   "dependencies": {
-    "@apexui/tokens": "0.1.0",
-    "@apexui/web-components": "0.1.0",
-    "@sveltejs/adapter-static": "^3.0.0",
-    "@sveltejs/kit": "^2.0.0",
-    "@sveltejs/vite-plugin-svelte": "^5.0.0",
-    "svelte": "^5.0.0",
-    "vite": "^6.0.0",
+    "@corvaui/tokens": "0.1.7",
+    "@corvaui/web-components": "0.1.7",
+    "@sveltejs/adapter-static": "^3.0.10",
+    "@sveltejs/kit": "^2.70.3",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "svelte": "^5.56.10",
+    "vite": "^8.2.2",
     "typescript": "^5.8.3"
+  },
+  "overrides": {
+    "cookie": "^1.1.1"
   },
   "devDependencies": {}
 }

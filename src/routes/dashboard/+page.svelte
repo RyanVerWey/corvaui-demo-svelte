@@ -1,5 +1,5 @@
 <script lang="ts">
-import { apexProps } from "$lib/apex";
+import { corvaProps } from "$lib/corva";
 
 const routeHealth = [
   { label: "On-time arrivals", value: 92 },
@@ -58,51 +58,51 @@ const timelineEvents = [
 </script>
 
 <svelte:head>
-  <title>Metrics Dashboard | Northstar Field Services</title>
+  <title>Metrics Dashboard | CorvaUI Operations</title>
 </svelte:head>
 
 <section class="page-header">
-  <apex-stack gap="md">
-    <apex-badge tone="info">Operations dashboard</apex-badge>
-    <apex-typography as="h1" variant="display">Morning service control</apex-typography>
-    <apex-typography variant="body">
+  <corva-stack gap="md">
+    <corva-badge tone="info">Operations dashboard</corva-badge>
+    <corva-typography as="h1" variant="display">Morning service control</corva-typography>
+    <corva-typography variant="body">
       Dispatch, account promises, and closeout readiness stay visible before the field day drifts.
-    </apex-typography>
-  </apex-stack>
-  <apex-button-group label="Dashboard actions">
-    <apex-button size="sm" variant="secondary">Export</apex-button>
-    <apex-button size="sm">Refresh</apex-button>
-  </apex-button-group>
+    </corva-typography>
+  </corva-stack>
+  <corva-button-group label="Dashboard actions">
+    <corva-button size="sm" variant="secondary">Export</corva-button>
+    <corva-button size="sm">Refresh</corva-button>
+  </corva-button-group>
 </section>
 
 <section class="content-grid three">
-  <apex-card eyebrow="Booked route time" heading="78%">
-    <apex-progress label="Target 82%" value="78"></apex-progress>
-  </apex-card>
-  <apex-card eyebrow="Open risks" heading="11">
-    <apex-progress label="Risk cleared" value="64"></apex-progress>
-  </apex-card>
-  <apex-card eyebrow="Invoice ready" heading="$42.8K">
-    <apex-progress label="Closeout package complete" value="71"></apex-progress>
-  </apex-card>
+  <corva-card eyebrow="Booked route time" heading="78%">
+    <corva-progress label="Target 82%" value="78"></corva-progress>
+  </corva-card>
+  <corva-card eyebrow="Open risks" heading="11">
+    <corva-progress label="Risk cleared" value="64"></corva-progress>
+  </corva-card>
+  <corva-card eyebrow="Invoice ready" heading="$42.8K">
+    <corva-progress label="Closeout package complete" value="71"></corva-progress>
+  </corva-card>
 </section>
 
 <section class="split-grid">
-  <apex-chart label="Route health" use:apexProps={{ data: routeHealth }}></apex-chart>
-  <apex-card eyebrow="Workflow" heading="Today by stage">
-    <apex-workflow-board use:apexProps={{ columns: workflowColumns }}></apex-workflow-board>
-  </apex-card>
+  <corva-chart label="Route health" use:corvaProps={{ data: routeHealth }}></corva-chart>
+  <corva-card eyebrow="Workflow" heading="Today by stage">
+    <corva-workflow-board use:corvaProps={{ columns: workflowColumns }}></corva-workflow-board>
+  </corva-card>
 </section>
 
 <section class="split-grid">
-  <apex-data-table
+  <corva-data-table
     caption="Active work orders"
-    use:apexProps={{ columns: workOrderColumns, rows: workOrderRows }}
-  ></apex-data-table>
+    use:corvaProps={{ columns: workOrderColumns, rows: workOrderRows }}
+  ></corva-data-table>
   <div class="section-stack">
-    <apex-timeline use:apexProps={{ events: timelineEvents }}></apex-timeline>
-    <apex-alert tone="warning" heading="Capacity watch">
+    <corva-timeline use:corvaProps={{ events: timelineEvents }}></corva-timeline>
+    <corva-alert tone="warning" heading="Capacity watch">
       Piedmont route has one crew open after 14:30. Keep urgent warranty calls there.
-    </apex-alert>
+    </corva-alert>
   </div>
 </section>

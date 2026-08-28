@@ -1,6 +1,6 @@
 <script lang="ts">
 import { base } from "$app/paths";
-import { apexProps } from "$lib/apex";
+import { corvaProps } from "$lib/corva";
 
 const proofPoints = [
   { label: "Same-day dispatch", value: 91 },
@@ -23,84 +23,84 @@ const customerColumns = [
 </script>
 
 <svelte:head>
-  <title>Northstar Field Services</title>
+  <title>CorvaUI Field Services</title>
 </svelte:head>
 
 <section class="hero-band">
   <div class="hero-copy">
-    <apex-stack gap="lg">
-      <apex-badge tone="success">Regional field operations</apex-badge>
-      <apex-typography as="h1" variant="display">
+    <corva-stack gap="lg">
+      <corva-badge tone="success">Regional field operations</corva-badge>
+      <corva-typography as="h1" variant="display">
         Premium service teams, routed with fewer handoffs.
-      </apex-typography>
-      <apex-typography variant="body">
-        Northstar Field Services coordinates maintenance visits, warranty work, and account follow-up for operators that need a tighter daily cadence.
-      </apex-typography>
+      </corva-typography>
+      <corva-typography variant="body">
+        CorvaUI Field Services coordinates maintenance visits, warranty work, and account follow-up for operators that need a tighter daily cadence.
+      </corva-typography>
       <div class="action-row">
-        <apex-button>Schedule operations review</apex-button>
-        <apex-button variant="secondary">View proof pack</apex-button>
-        <apex-link href={`${base}/dashboard`} variant="standalone">Open live metrics</apex-link>
+        <corva-button>Schedule operations review</corva-button>
+        <corva-button variant="secondary">View proof pack</corva-button>
+        <corva-link href={`${base}/dashboard`} variant="standalone">Open live metrics</corva-link>
       </div>
-    </apex-stack>
+    </corva-stack>
   </div>
 
-  <apex-paper elevation="sm">
+  <corva-paper elevation="sm">
     <div class="operations-snapshot">
       <div class="snapshot-header">
-        <apex-badge tone="info">Today</apex-badge>
-        <apex-typography as="h2" variant="title">Charlotte dispatch board</apex-typography>
+        <corva-badge tone="info">Today</corva-badge>
+        <corva-typography as="h2" variant="title">Charlotte dispatch board</corva-typography>
       </div>
-      <apex-progress label="Route capacity booked" value="78"></apex-progress>
-      <apex-progress label="Parts matched before roll-out" value="88"></apex-progress>
-      <apex-progress label="Customer ETA confirmations" value="93"></apex-progress>
-      <apex-alert tone="success" heading="Crew 14 recovered">
+      <corva-progress label="Route capacity booked" value="78"></corva-progress>
+      <corva-progress label="Parts matched before roll-out" value="88"></corva-progress>
+      <corva-progress label="Customer ETA confirmations" value="93"></corva-progress>
+      <corva-alert tone="success" heading="Crew 14 recovered">
         Warranty visit moved ahead after parts scan matched truck stock.
-      </apex-alert>
+      </corva-alert>
     </div>
-  </apex-paper>
+  </corva-paper>
 </section>
 
 <section class="content-grid three">
-  <apex-card eyebrow="Offer" heading="Managed field cadence">
+  <corva-card eyebrow="Offer" heading="Managed field cadence">
     Route planning, customer commitments, crew readiness, and billing proof share one operational record.
-  </apex-card>
-  <apex-card eyebrow="Operators" heading="Built for regional scale">
+  </corva-card>
+  <corva-card eyebrow="Operators" heading="Built for regional scale">
     Dispatch leads, account managers, and field supervisors see the same status without spreadsheet relays.
-  </apex-card>
-  <apex-card eyebrow="Outcome" heading="Cleaner handoffs">
+  </corva-card>
+  <corva-card eyebrow="Outcome" heading="Cleaner handoffs">
     Each job carries service promise, site notes, safety checks, and completion evidence into the next step.
-  </apex-card>
+  </corva-card>
 </section>
 
 <section class="split-grid">
-  <apex-chart label="Customer proof" use:apexProps={{ data: proofPoints }}></apex-chart>
-  <apex-data-table
+  <corva-chart label="Customer proof" use:corvaProps={{ data: proofPoints }}></corva-chart>
+  <corva-data-table
     caption="Regional proof accounts"
-    use:apexProps={{ columns: customerColumns, rows: customerRows }}
-  ></apex-data-table>
+    use:corvaProps={{ columns: customerColumns, rows: customerRows }}
+  ></corva-data-table>
 </section>
 
 <section class="section-stack">
   <div class="section-heading">
-    <apex-typography as="h2" variant="title">What Northstar sells</apex-typography>
-    <apex-badge tone="neutral">Website plus app demo</apex-badge>
+    <corva-typography as="h2" variant="title">What CorvaUI sells</corva-typography>
+    <corva-badge tone="neutral">Website plus app demo</corva-badge>
   </div>
   <div class="content-grid two">
-    <apex-paper elevation="sm">
-      <apex-stack gap="md">
-        <apex-typography as="h3" variant="subtitle">Marketing surface</apex-typography>
-        <apex-typography variant="body">
+    <corva-paper elevation="sm">
+      <corva-stack gap="md">
+        <corva-typography as="h3" variant="subtitle">Marketing surface</corva-typography>
+        <corva-typography variant="body">
           Home page presents a concrete business story instead of a component catalog.
-        </apex-typography>
-      </apex-stack>
-    </apex-paper>
-    <apex-paper elevation="sm">
-      <apex-stack gap="md">
-        <apex-typography as="h3" variant="subtitle">Application surface</apex-typography>
-        <apex-typography variant="body">
+        </corva-typography>
+      </corva-stack>
+    </corva-paper>
+    <corva-paper elevation="sm">
+      <corva-stack gap="md">
+        <corva-typography as="h3" variant="subtitle">Application surface</corva-typography>
+        <corva-typography variant="body">
           Routed pages show dashboard, records, forms, settings, and integration proof as real workflows.
-        </apex-typography>
-      </apex-stack>
-    </apex-paper>
+        </corva-typography>
+      </corva-stack>
+    </corva-paper>
   </div>
 </section>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { apexProps } from "$lib/apex";
+import { corvaProps } from "$lib/corva";
 
 const customerColumns = [
   { key: "account", header: "Account" },
@@ -45,49 +45,49 @@ const pipelineColumns = [
 </script>
 
 <svelte:head>
-  <title>Customers | Northstar Field Services</title>
+  <title>Customers | CorvaUI Operations</title>
 </svelte:head>
 
 <section class="page-header">
-  <apex-stack gap="md">
-    <apex-badge tone="info">Customer records</apex-badge>
-    <apex-typography as="h1" variant="display">Pipeline and account memory.</apex-typography>
-    <apex-typography variant="body">
+  <corva-stack gap="md">
+    <corva-badge tone="info">Customer records</corva-badge>
+    <corva-typography as="h1" variant="display">Pipeline and account memory.</corva-typography>
+    <corva-typography variant="body">
       Sales, service, and account teams can inspect commitments without leaving the operating workspace.
-    </apex-typography>
-  </apex-stack>
-  <apex-search-form label="Search customers" placeholder="Account, owner, region" submit-label="Search"></apex-search-form>
+    </corva-typography>
+  </corva-stack>
+  <corva-search-form label="Search customers" placeholder="Account, owner, region" submit-label="Search"></corva-search-form>
 </section>
 
 <section class="split-grid">
-  <apex-card eyebrow="Pipeline" heading="Regional opportunities">
-    <apex-workflow-board use:apexProps={{ columns: pipelineColumns }}></apex-workflow-board>
-  </apex-card>
-  <apex-card eyebrow="Selected account" heading="Harris Medical">
-    <apex-stack gap="md">
+  <corva-card eyebrow="Pipeline" heading="Regional opportunities">
+    <corva-workflow-board use:corvaProps={{ columns: pipelineColumns }}></corva-workflow-board>
+  </corva-card>
+  <corva-card eyebrow="Selected account" heading="Harris Medical">
+    <corva-stack gap="md">
       <div class="identity-row">
-        <apex-avatar initials="HM" alt="Harris Medical"></apex-avatar>
+        <corva-avatar initials="HM" alt="Harris Medical"></corva-avatar>
         <div>
-          <apex-typography as="h2" variant="subtitle">North campus contract</apex-typography>
-          <apex-typography variant="caption">Renewal due July 2026</apex-typography>
+          <corva-typography as="h2" variant="subtitle">North campus contract</corva-typography>
+          <corva-typography variant="caption">Renewal due July 2026</corva-typography>
         </div>
       </div>
-      <apex-progress label="Proof package readiness" value="86"></apex-progress>
-      <apex-rating label="Relationship strength" value="4" max="5"></apex-rating>
-      <apex-alert tone="success" heading="Next best action">
+      <corva-progress label="Proof package readiness" value="86"></corva-progress>
+      <corva-rating label="Relationship strength" value="4" max="5"></corva-rating>
+      <corva-alert tone="success" heading="Next best action">
         Bring first-visit close rate and after-hours coverage data into renewal review.
-      </apex-alert>
-    </apex-stack>
-  </apex-card>
+      </corva-alert>
+    </corva-stack>
+  </corva-card>
 </section>
 
 <section class="section-stack">
   <div class="section-heading">
-    <apex-typography as="h2" variant="title">Customer records</apex-typography>
-    <apex-pagination label="Customer pages" count="8" page="1"></apex-pagination>
+    <corva-typography as="h2" variant="title">Customer records</corva-typography>
+    <corva-pagination label="Customer pages" count="8" page="1"></corva-pagination>
   </div>
-  <apex-data-grid
+  <corva-data-grid
     caption="Customer pipeline records"
-    use:apexProps={{ columns: customerColumns, rows: customerRows }}
-  ></apex-data-grid>
+    use:corvaProps={{ columns: customerColumns, rows: customerRows }}
+  ></corva-data-grid>
 </section>
