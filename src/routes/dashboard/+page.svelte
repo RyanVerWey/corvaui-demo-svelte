@@ -50,6 +50,7 @@
     <corva-data-table bind:this={impactTable} caption="District impact report"></corva-data-table>
   </div>
   <div class="report-aside">
+    <figure class="report-photo"><img src="/images/common-ground-array.jpg" alt="Community solar array producing power under a clear sky" width="1600" height="1067" loading="lazy" /></figure>
     <corva-card eyebrow="Board recommendation" heading="Fund the Harbor Pump battery">Peak reduction at South Basin can protect water service and return an estimated $42K annually.</corva-card>
     <corva-progress label="Annual member credit goal" value="78"></corva-progress>
     <corva-alert tone="warning" heading="Public vote opens Monday">Members will rank three resilience projects for the 2027 capital plan.</corva-alert>

@@ -17,7 +17,10 @@
     <corva-typography as="h1" variant="display">A clean-energy plan with a place in the community.</corva-typography>
     <corva-typography variant="body">Choose a participation level based on your home, resilience needs, and appetite for local stewardship.</corva-typography>
   </div>
-  <corva-card eyebrow="Common to every plan" heading="One member, one vote">Rates, siting priorities, and community reserve rules remain visible to every participating household.</corva-card>
+  <figure class="page-photo">
+    <img src="{base}/images/common-ground-home.jpg" alt="Home with rooftop solar surrounded by a planted neighborhood garden" width="1600" height="900" loading="lazy" />
+    <figcaption><span>Common to every plan</span><strong>One member, one vote.</strong></figcaption>
+  </figure>
 </header>
 
 <section class="table-section" aria-labelledby="plans-title">

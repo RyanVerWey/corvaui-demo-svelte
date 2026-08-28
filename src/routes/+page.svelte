@@ -18,7 +18,7 @@
     </div>
   </div>
   <figure class="home-photo">
-    <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1500&q=84" alt="Solar panels collecting afternoon light across a green community landscape" />
+    <img src="{base}/images/common-ground-field.jpg" alt="Solar panels collecting afternoon light across a green community landscape" width="1800" height="1200" fetchpriority="high" />
     <figcaption><strong>East Ward</strong><span>Solar surplus is supplying 312 nearby homes.</span></figcaption>
   </figure>
 </section>
@@ -44,11 +44,15 @@
 </section>
 
 <section class="status-story" aria-labelledby="status-title">
-  <div class="energy-orbit" aria-label="Energy flow diagram">
-    <span class="orbit-center">72%<small>local now</small></span>
-    <span class="orbit-label orbit-a">Homes</span>
-    <span class="orbit-label orbit-b">Schools</span>
-    <span class="orbit-label orbit-c">Storage</span>
+  <div class="community-photo-stack" aria-label="Community solar in practice">
+    <figure class="community-photo-primary">
+      <img src="{base}/images/common-ground-array.jpg" alt="Rows of community solar panels beneath a broad summer sky" width="1600" height="1067" loading="lazy" />
+      <figcaption><strong>72%</strong><span>local energy supplied today</span></figcaption>
+    </figure>
+    <figure class="community-photo-secondary">
+      <img src="{base}/images/common-ground-home.jpg" alt="Neighborhood home producing electricity from rooftop solar" width="1600" height="900" loading="lazy" />
+      <figcaption>1,184 member rooftops connected</figcaption>
+    </figure>
   </div>
   <div class="status-copy">
     <corva-typography id="status-title" as="h2" variant="title">A grid that can explain itself.</corva-typography>
