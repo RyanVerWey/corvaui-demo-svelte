@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { routes, siteRows, planRows, generationData, districtData } from "../src/lib/content";
 
 describe("Common Ground Energy demo contract", () => {
-  it("ships exactly the four required showcase routes", () => {
-    expect(routes.map((route) => route.href)).toEqual(["/", "/about", "/data-table", "/dashboard"]);
+  it("ships the complete showcase route set", () => {
+    expect(routes.map((route) => route.href)).toEqual(["/", "/about", "/data-table", "/dashboard", "/steward"]);
   });
   it("uses unique site names and enough data for paging", () => {
     const names = siteRows.map((row) => row.site);

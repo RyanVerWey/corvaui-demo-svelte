@@ -57,6 +57,10 @@ main { width: min(100%, 1220px); margin: 0 auto; padding: clamp(1rem, 3vw, 2.5re
 .page-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.8) contrast(1.03); }
 .page-photo figcaption { position: absolute; inset: auto .8rem .8rem; display: grid; gap: .2rem; padding: .8rem .9rem; color: oklch(97% .012 80); background: oklch(23% .04 72 / .94); border-radius: var(--corva-radius-sm); }
 .page-photo figcaption span { font-size: .72rem; font-weight: 800; text-transform: uppercase; }
+.steward-summary { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: flex-end; padding: 1rem; border: 1px solid var(--corva-color-border); background: var(--corva-color-surface); }
+.steward-summary span { display: grid; min-width: 8rem; color: var(--corva-color-muted); font-size: .8rem; }
+.steward-summary strong { color: var(--corva-color-heading); font-size: 1.5rem; }
+.steward-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr); gap: 1.5rem; align-items: start; padding-bottom: 2rem; }
 .table-section { padding-bottom: 3rem; }
 .program-notes { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--corva-color-border); }
 .program-notes article { padding: 2rem; }
@@ -86,7 +90,7 @@ footer a { color: var(--corva-color-accent); }
 corva-app-bar, corva-card, corva-chart, corva-data-grid, corva-data-table, corva-paper, corva-tabs, corva-typography { display: block; min-width: 0; }
 corva-data-grid, corva-data-table, corva-paper { width: 100%; min-width: 0; max-width: 100%; }
 @media (max-width: 900px) {
-  .home-hero, .status-story, .page-hero, .report-layout { grid-template-columns: minmax(0, 1fr); }
+  .home-hero, .status-story, .page-hero, .report-layout, .steward-layout { grid-template-columns: minmax(0, 1fr); }
   .home-hero { min-height: auto; }
   .home-photo, .home-photo img { min-height: 400px; }
   .metric-ribbon { grid-template-columns: repeat(2, 1fr); }

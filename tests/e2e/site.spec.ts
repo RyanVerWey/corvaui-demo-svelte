@@ -8,6 +8,7 @@ const routes = [
   ["programs", "/about", "Local solar share", 1],
   ["sites", "/data-table", "Maple School", 0],
   ["impact", "/dashboard", "East Ward", 1],
+  ["steward", "/steward", "Capital workflow", 0],
 ] as const;
 
 for (const [name, path, expectedContent, expectedImageCount] of routes) {

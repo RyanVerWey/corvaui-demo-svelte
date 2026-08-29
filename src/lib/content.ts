@@ -3,6 +3,7 @@ export const routes = [
   { id: "about", label: "Programs", href: "/about" },
   { id: "data-table", label: "Sites", href: "/data-table" },
   { id: "dashboard", label: "Impact", href: "/dashboard" },
+  { id: "steward", label: "Steward", href: "/steward" },
 ] as const;
 
 export const planColumns = [
@@ -67,4 +68,16 @@ export const reportTabs = [
   { id: "day", label: "Today" },
   { id: "month", label: "Month" },
   { id: "year", label: "Year" },
+];
+
+export const stewardshipWorkflow = [
+  { id: "proposed", title: "Proposed", items: [{ id: "school", title: "Maple School shade canopy", meta: "$128K request" }, { id: "pump", title: "Harbor Pump battery", meta: "Resilience" }] },
+  { id: "review", title: "Community review", items: [{ id: "library", title: "Library storage expansion", meta: "Vote closes Friday" }] },
+  { id: "funded", title: "Funded", items: [{ id: "market", title: "Market Hall solar", meta: "Install October" }] },
+];
+
+export const stewardshipTimeline = [
+  { id: "model", label: "Benefit model published", description: "Savings, resilience hours, and neighborhood reach are visible.", meta: "Aug 22" },
+  { id: "review", label: "Technical review complete", description: "Interconnection and lifecycle costs were validated.", meta: "Aug 26" },
+  { id: "vote", label: "Member vote opens", description: "Ranked choice voting runs for seven days.", meta: "Sep 2" },
 ];
