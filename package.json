@@ -12,14 +12,14 @@
     "test": "npm audit && npm run test:unit && npm run build && npm run test:e2e"
   },
   "dependencies": {
-    "@corvaui/tokens": "0.1.7",
-    "@corvaui/web-components": "0.1.7",
+    "@corvaui/tokens": "^0.1.8",
+    "@corvaui/web-components": "^0.1.8",
     "@sveltejs/adapter-static": "^3.0.10",
     "@sveltejs/kit": "^2.70.3",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "svelte": "^5.56.10",
-    "vite": "^8.2.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vite": "^8.2.2"
   },
   "overrides": {
     "cookie": "^1.1.1"
