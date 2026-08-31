@@ -6,6 +6,11 @@
   let generationChart: HTMLElement;
   let districtChart: HTMLElement;
   let impactTable: HTMLElement;
+  const districtSeries = [
+    { key: "localShare", label: "Local share", color: "var(--corva-color-chart-series-1)" },
+    { key: "resilience", label: "Resilience", color: "var(--corva-color-chart-series-4)" },
+    { key: "memberGoal", label: "Member goal", color: "var(--corva-color-chart-series-5)" },
+  ];
   onMount(async () => {
     await Promise.all([
       customElements.whenDefined("corva-tabs"),
@@ -14,7 +19,7 @@
     ]);
     Object.assign(reportTabsElement, { items: reportTabs });
     Object.assign(generationChart, { data: generationData });
-    Object.assign(districtChart, { data: districtData });
+    Object.assign(districtChart, { data: districtData, series: districtSeries });
     Object.assign(impactTable, { columns: impactColumns, rows: impactRows });
     prepareScrollableTables();
   });
@@ -38,7 +43,7 @@
 
 <section class="chart-layout">
   <corva-paper><corva-chart bind:this={generationChart} label="Energy source mix"></corva-chart></corva-paper>
-  <corva-paper><corva-chart bind:this={districtChart} label="District local energy share"></corva-chart></corva-paper>
+  <corva-paper><corva-chart bind:this={districtChart} label="District local energy share" type="bar"></corva-chart></corva-paper>
 </section>
 
 <section class="report-layout" aria-labelledby="district-title">
