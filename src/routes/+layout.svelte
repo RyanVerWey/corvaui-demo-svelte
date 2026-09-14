@@ -7,6 +7,7 @@
   import { routes } from "$lib/content";
 
   let isDark = false;
+  let mobileMenu: HTMLDetailsElement;
   $: theme = isDark ? "amber-dark" : "amber-light";
   $: activePath = $page.route.id ?? "/";
 
@@ -18,6 +19,10 @@
   const setTheme = (event: CustomEvent<{ checked: boolean }>) => {
     isDark = event.detail.checked;
     localStorage.setItem("common-ground-theme", isDark ? "amber-dark" : "amber-light");
+  };
+
+  const closeMobileMenu = () => {
+    mobileMenu.open = false;
   };
 </script>
 
@@ -35,11 +40,11 @@
     </nav>
     <corva-switch slot="actions" label="Dark mode" checked={isDark} on:corvaChange={setTheme}></corva-switch>
   </corva-app-bar>
-  <details class="mobile-menu">
+  <details bind:this={mobileMenu} class="mobile-menu">
     <summary>Menu</summary>
     <nav aria-label="Mobile navigation">
       {#each routes as route}
-        <a href={`${base}${route.href === "/" ? "/" : route.href}`} aria-current={activePath === route.href ? "page" : undefined}>{route.label}</a>
+        <a href={`${base}${route.href === "/" ? "/" : route.href}`} aria-current={activePath === route.href ? "page" : undefined} on:click={closeMobileMenu}>{route.label}</a>
       {/each}
     </nav>
   </details>

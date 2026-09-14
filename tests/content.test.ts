@@ -1,7 +1,16 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import { routes, siteRows, planRows, generationData, districtData } from "../src/lib/content";
 
 describe("Common Ground Energy demo contract", () => {
+  it("registers CorvaUI through the client-only Svelte integration", () => {
+    const registration = readFileSync(new URL("../src/lib/corva.ts", import.meta.url), "utf8");
+    const layout = readFileSync(new URL("../src/routes/+layout.svelte", import.meta.url), "utf8");
+    expect(registration).toContain('from "@corvaui/svelte"');
+    expect(registration).toContain("registerCorvaUI()");
+    expect(registration).not.toContain("@corvaui/web-components/components");
+    expect(layout).toContain('await import("$lib/corva")');
+  });
   it("ships the complete showcase route set", () => {
     expect(routes.map((route) => route.href)).toEqual(["/", "/about", "/data-table", "/dashboard", "/steward"]);
   });

@@ -12,7 +12,7 @@
 
 <header class="page-hero data-hero">
   <div>
-    <corva-badge tone="success">18 sites online</corva-badge>
+    <corva-badge tone="success">Synthetic network · 18 sites</corva-badge>
     <corva-typography as="h1" variant="display">Community energy sites</corva-typography>
     <corva-typography variant="body">Scan generation, storage, current contribution, and resilience state across the cooperative network.</corva-typography>
   </div>

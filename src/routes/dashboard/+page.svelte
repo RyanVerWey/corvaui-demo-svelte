@@ -22,7 +22,7 @@
 
 <header class="page-hero reports-hero">
   <div>
-    <corva-badge tone="warning">August member report</corva-badge>
+    <corva-badge tone="warning">Synthetic August member report</corva-badge>
     <corva-typography as="h1" variant="display">Impact you can trace back to a place.</corva-typography>
     <corva-typography variant="body">Generation, resilience, member savings, and local carbon impact share one readable report.</corva-typography>
   </div>

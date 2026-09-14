@@ -4,7 +4,7 @@
 
 <section class="home-hero" aria-labelledby="home-title">
   <div class="home-copy">
-    <corva-badge tone="warning">Community power, working today</corva-badge>
+    <corva-badge tone="warning">Deterministic preview · synthetic energy data</corva-badge>
     <corva-typography id="home-title" as="h1" variant="display">The energy transition belongs on your block.</corva-typography>
     <corva-typography variant="body">Common Ground helps neighborhoods own clean generation, share stored power, and keep essential places running when the larger grid cannot.</corva-typography>
     <div class="hero-actions">
