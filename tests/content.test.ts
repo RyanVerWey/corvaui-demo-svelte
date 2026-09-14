@@ -1,11 +1,16 @@
-import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
+import { describe, expect, it } from "vitest";
 import { routes, siteRows, planRows, generationData, districtData } from "../src/lib/content";
+
+const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
 
 describe("Common Ground Energy demo contract", () => {
   it("registers CorvaUI through the client-only Svelte integration", () => {
     const registration = readFileSync(new URL("../src/lib/corva.ts", import.meta.url), "utf8");
     const layout = readFileSync(new URL("../src/routes/+layout.svelte", import.meta.url), "utf8");
+    expect(pkg.dependencies["@corvaui/svelte"]).toBe("^0.2.1");
+    expect(pkg.dependencies["@corvaui/web-components"]).toBeUndefined();
+    expect(pkg.dependencies["@corvaui/tokens"]).toBe("^0.2.1");
     expect(registration).toContain('from "@corvaui/svelte"');
     expect(registration).toContain("registerCorvaUI()");
     expect(registration).not.toContain("@corvaui/web-components/components");
@@ -22,8 +27,11 @@ describe("Common Ground Energy demo contract", () => {
   });
   it("keeps report values in valid percentage ranges", () => {
     for (const point of [...generationData, ...districtData]) {
-      expect(point.value).toBeGreaterThanOrEqual(0);
-      expect(point.value).toBeLessThanOrEqual(100);
+      for (const value of Object.values(point).filter((entry): entry is number => typeof entry === "number")) {
+        expect(value).toBeGreaterThanOrEqual(0);
+        expect(value).toBeLessThanOrEqual(100);
+      }
     }
+    expect(Object.keys(districtData[0]).filter((key) => key !== "label")).toHaveLength(3);
   });
 });

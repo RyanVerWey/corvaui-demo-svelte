@@ -8,6 +8,7 @@
     "build": "vite build",
     "test:static": "node scripts/check-static-output.mjs",
     "preview": "vite preview --host 127.0.0.1",
+    "pretest:unit": "svelte-kit sync",
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
     "test": "npm audit && npm run test:unit && npm run build && npm run test:static && npm run test:e2e"

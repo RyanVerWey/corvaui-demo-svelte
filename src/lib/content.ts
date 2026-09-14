@@ -47,10 +47,10 @@ export const generationData = [
   { label: "Flex", value: 3 },
 ];
 export const districtData = [
-  { label: "East Ward", value: 92 },
-  { label: "River", value: 86 },
-  { label: "North Hill", value: 78 },
-  { label: "Old Town", value: 89 },
+  { label: "East Ward", localShare: 92, resilience: 84, memberGoal: 88 },
+  { label: "River", localShare: 86, resilience: 91, memberGoal: 85 },
+  { label: "North Hill", localShare: 78, resilience: 82, memberGoal: 86 },
+  { label: "Old Town", localShare: 89, resilience: 87, memberGoal: 89 },
 ];
 export const impactColumns = [
   { key: "district", header: "District" },
