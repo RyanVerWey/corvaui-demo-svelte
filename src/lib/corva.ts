@@ -1,6 +1,48 @@
-import { registerCorvaUI } from "@corvaui/svelte";
+import {
+  defineCorvaAlert,
+  defineCorvaAppBar,
+  defineCorvaBadge,
+  defineCorvaButton,
+  defineCorvaCard,
+  defineCorvaChart,
+  defineCorvaDataGrid,
+  defineCorvaDataTable,
+  defineCorvaDatePicker,
+  defineCorvaLink,
+  defineCorvaPaper,
+  defineCorvaProgress,
+  defineCorvaSelect,
+  defineCorvaSlider,
+  defineCorvaStack,
+  defineCorvaSwitch,
+  defineCorvaTabs,
+  defineCorvaTextField,
+  defineCorvaTimeline,
+  defineCorvaTypography,
+  defineCorvaWorkflowBoard,
+} from "@corvaui/svelte/components";
 
-await registerCorvaUI();
+defineCorvaAlert();
+defineCorvaAppBar();
+defineCorvaBadge();
+defineCorvaButton();
+defineCorvaCard();
+defineCorvaChart();
+defineCorvaDataGrid();
+defineCorvaDataTable();
+defineCorvaDatePicker();
+defineCorvaLink();
+defineCorvaPaper();
+defineCorvaProgress();
+defineCorvaSelect();
+defineCorvaSlider();
+defineCorvaStack();
+defineCorvaSwitch();
+defineCorvaTabs();
+defineCorvaTextField();
+defineCorvaTimeline();
+defineCorvaTypography();
+defineCorvaWorkflowBoard();
 
 export type CorvaProps = Record<string, unknown>;
 

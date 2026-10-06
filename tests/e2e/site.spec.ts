@@ -18,6 +18,11 @@ for (const [name, path, expectedContent, expectedImageCount] of routes) {
     page.on("console", (message) => {
       if (message.type() === "error" || /hydration/i.test(message.text())) runtimeErrors.push(message.text());
     });
+    page.on("response", (response) => {
+      if (response.status() >= 400 && /\.entry\.js(?:\?|$)/.test(response.url())) {
+        runtimeErrors.push(`${response.status()} ${response.url()}`);
+      }
+    });
     await page.goto(path, { waitUntil: "networkidle" });
     const viewportWidth = await page.evaluate(() => window.innerWidth);
     expect(viewportWidth).toBe(testInfo.project.name === "mobile" ? 320 : 1440);
@@ -37,6 +42,15 @@ for (const [name, path, expectedContent, expectedImageCount] of routes) {
       return !image.src.includes("/images/") || !image.alt.trim() || image.naturalWidth === 0;
     }).map((node) => (node as HTMLImageElement).src));
     expect(invalidImages).toEqual([]);
+    const componentState = await page.evaluate(() => {
+      const elements = [...document.querySelectorAll("*")].filter((element) => element.localName.startsWith("corva-"));
+      return {
+        undefinedTags: [...new Set(elements.filter((element) => !customElements.get(element.localName)).map((element) => element.localName))],
+        unhydratedTags: [...new Set(elements.filter((element) => !element.classList.contains("hydrated")).map((element) => element.localName))],
+      };
+    });
+    expect(componentState.undefinedTags).toEqual([]);
+    expect(componentState.unhydratedTags).toEqual([]);
     const overflow = await page.evaluate(() => ({
       amount: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       elements: [...document.querySelectorAll("*")].filter((element) => element.getBoundingClientRect().right > document.documentElement.clientWidth + 1).slice(0, 8).map((element) => `${element.tagName.toLowerCase()}.${element.className}`),
