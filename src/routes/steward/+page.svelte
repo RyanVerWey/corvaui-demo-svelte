@@ -26,7 +26,7 @@
 
 <header class="page-hero steward-hero">
   <div>
-    <corva-badge tone="success">Member governance</corva-badge>
+    <corva-badge tone="success">Synthetic governance workspace</corva-badge>
     <corva-typography as="h1" variant="display">Turn community priorities into funded projects.</corva-typography>
     <corva-typography variant="body">Model value, collect review, publish evidence, and move each resilience investment through a transparent decision path.</corva-typography>
   </div>

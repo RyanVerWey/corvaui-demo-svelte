@@ -4,13 +4,11 @@ Public Vercel showcase using the first-class `@corvaui/svelte` integration, `@co
 
 ## Routes
 
-- `/` clinic operations launch surface
-- `/dashboard` clinic access dashboard
-- `/work-orders` visit intake
-- `/customers` patient records
-- `/data-table` sortable/filterable schedule grid
-- `/settings` clinic workspace settings
-- `/about` package proof
+- `/` community-energy launch surface
+- `/about` member program comparison
+- `/data-table` sortable/filterable site grid
+- `/dashboard` community impact reporting
+- `/steward` proposal and governance workspace
 
 ## Quality Gate
 
